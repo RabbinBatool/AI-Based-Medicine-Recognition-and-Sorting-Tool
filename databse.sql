@@ -6,7 +6,7 @@ CREATE TABLE Manufacturer (
     contact_info TEXT
 );
 
--- Create table for Categories
+
 CREATE TABLE Category (
     category_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL, -- e.g., Painkiller, Antibiotic
