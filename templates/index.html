@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Medicine Identifier</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { margin: 10px 0; }
+    #result { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🔬 Medicine Detection</h2>
+
+  <!-- 1. Upload Image -->
+  <form id="imageForm">
+    <label>Upload Medicine Image:</label><br>
+    <input type="file" name="image" accept="image/*" required />
+    <br>
+    <button type="submit">Predict</button>
+  </form>
+
+  <div id="predictionResult"></div>
+
+  <hr>
+
+  <!-- 2. Search by Medicine Name -->
+  <h3>📋 Get Medicine Details</h3>
+  <input type="text" id="medicineName" placeholder="Enter medicine name" />
+  <button onclick="getMedicineDetails()">Search</button>
+  <div id="medicineInfo"></div>
+
+  <hr>
+
+  <!-- 3. Search by Indication -->
+  <h3>💊 Search Medicines by Indication</h3>
+  <input type="text" id="indication" placeholder="e.g. pain" />
+  <button onclick="searchByIndication()">Search</button>
+  <div id="indicationResult"></div>
+
+  <script>
+    // Handle image upload
+    document.getElementById('imageForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const res = await fetch('/predict', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.error) {
+        document.getElementById('predictionResult').innerText = "❌ " + data.error;
+        return;
+      }
+      document.getElementById('predictionResult').innerHTML =
+        `<strong>Medicine:</strong> ${data.medicine}<br><strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%`;
+    });
+
+    // Get medicine details
+    async function getMedicineDetails() {
+      const name = document.getElementById('medicineName').value.trim();
+      if (!name) return alert("Enter medicine name.");
+      const res = await fetch(`/medicine/${name}`);
+      const data = await res.json();
+      if (data.error) {
+        document.getElementById('medicineInfo').innerText = "❌ " + data.error;
+        return;
+      }
+      document.getElementById('medicineInfo').innerHTML = `
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Dosage Form:</strong> ${data.dosage_form}</p>
+        <p><strong>Category:</strong> ${data.category}</p>
+        <p><strong>Used For:</strong> ${data.used_for}</p>
+        <p><strong>Indications:</strong> ${data.indications.join(', ')}</p>
+        <p><strong>Side Effects:</strong> ${data.side_effects.join(', ')}</p>
+      `;
+    }
+
+    // Search by indication
+    async function searchByIndication() {
+      const term = document.getElementById('indication').value.trim();
+      if (!term) return alert("Enter indication.");
+      const res = await fetch(`/search_by_indication?indication=${term}`);
+      const data = await res.json();
+      if (data.error) {
+        document.getElementById('indicationResult').innerText = "❌ " + data.error;
+        return;
+      }
+      document.getElementById('indicationResult').innerHTML = `
+        <p><strong>Medicines:</strong> ${data.medicines_for_indication.join(', ')}</p>
+      `;
+    }
+  </script>
+</body>
+</html>

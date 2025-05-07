@@ -1,0 +1,30 @@
+0 Aleve Gel
+1 Aleve Tablet
+2 Allegra
+3 Amoxicillin Capsule
+4 Amoxicillin Syrup
+5 Amoxicillin Tablet
+6 Augmentin Syrup
+7 Augmentin Tablet
+8 Betnovate-N
+9 Coferb Syrup
+10 Coferb Tablet
+11 Dermex
+12 Doxycycline Capsule
+13 Ferosoft Injection
+14 Ferosoft Syrup
+15 Ferosoft Tablet
+16 Flagyl Injection
+17 Flagyl Syrup
+18 Flagyl Tablet
+19 Glucophage
+20 Lopressor
+21 Panadol Syrup
+22 Panadol Tablet
+23 Pulmonol Syrup
+24 SheVit Tablet
+25 VapoRub
+26 Ventolin
+27 VotralEmulgel
+28 Zantac
+29 Opdivo
