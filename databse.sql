@@ -35,7 +35,6 @@ CREATE TABLE Medicine (
     FOREIGN KEY (category_id) REFERENCES Category(category_id)
 );
 
--- Create table for linking Medicines with Active Ingredients (Many-to-Many)
 CREATE TABLE MedicineIngredient (
     medicine_id INT,
     ingredient_id INT,
