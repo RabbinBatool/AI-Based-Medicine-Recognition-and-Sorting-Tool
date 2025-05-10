@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify
-from flask import send_from_directory
+from flask import Flask, request, jsonify, render_template
 import psycopg2
 import tensorflow as tf
 import numpy as np
@@ -10,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return send_from_directory(".", "index.html")
+    return render_template("index.html")
 
 # ---- PostgreSQL DB Connection ----
 conn = psycopg2.connect(
@@ -30,7 +29,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # ---- Load Labels ----
-with open("labels", "r") as f:
+with open("labels.txt", "r") as f:
     labels = [line.strip() for line in f.readlines()]
 
 # ---- Preprocess Image ----
