@@ -1,0 +1,468 @@
+/* Additional styles for Medicine Detection page */
+:root {
+  --primary-color: #0077cc;
+  --primary-dark: #005fa3;
+  --secondary-color: #00c2cb;
+  --accent-color: #ff6b6b;
+  --text-color: #333333;
+  --text-light: #666666;
+  --background-light: #f8f9fa;
+  --white: #ffffff;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+  --border-radius: 8px;
+  --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Page Banner */
+.page-banner {
+  height: 40vh;
+  min-height: 300px;
+  background: url('2.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 119, 204, 0.7), rgba(0, 194, 203, 0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-content {
+  text-align: center;
+  color: var(--white);
+  max-width: 800px;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+.banner-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Enhanced shadow for better visibility */
+  font-weight: 700;
+}
+
+.banner-content .highlight {
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Enhanced shadow for highlight */
+  color: #ffea00; /* Bright yellow color for the Detection word */
+  font-weight: 800; /* Extra bold */
+  text-transform: uppercase; /* Make it uppercase for more emphasis */
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  opacity: 1; /* Full opacity for better visibility */
+  margin-bottom: 0;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7); /* Enhanced text shadow for better visibility */
+}
+
+/* Detection Container */
+.detection-container {
+  padding: 4rem 0;
+  background-color: var(--white);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.upload-container {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 3rem;
+  text-align: center;
+  transition: var(--transition);
+  margin-bottom: 2rem;
+}
+
+.upload-area {
+  border: 2px dashed var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 3rem 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: rgba(0, 119, 204, 0.05);
+}
+
+.upload-area:hover {
+  background-color: rgba(0, 119, 204, 0.1);
+  transform: translateY(-5px);
+  border-color: var(--secondary-color);
+}
+
+.upload-icon {
+  margin-bottom: 1.5rem;
+}
+
+.upload-icon i {
+  font-size: 4rem;
+  color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.upload-area h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.upload-area p {
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+#imageForm {
+  margin-top: 2rem;
+}
+
+#predictBtn {
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 50px; /* Made button fully rounded */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  transition: all 0.3s ease;
+}
+
+#predictBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Search by indication button - matching Medicine details button color */
+.search-by-indication {
+  background-color: var(--primary-color) !important; /* Match primary button color */
+  color: var(--white) !important;
+}
+
+.search-by-indication:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+/* Medicine Details button styling - for reference only */
+/* This class is already defined elsewhere in your original CSS or HTML */
+
+/* Prediction Result Section */
+.prediction-result {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  background-color: var(--background-light);
+  box-shadow: var(--shadow);
+  text-align: center;
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-header {
+  margin-bottom: 1.5rem;
+}
+
+.result-header h3 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.result-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.result-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+.result-item h4 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.result-item p {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.confidence-bar {
+  height: 10px;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.confidence-level {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 5px;
+  transition: width 1s ease;
+}
+
+/* Tips Section */
+.tips-section {
+  background-color: var(--background-light);
+  padding: 5rem 0;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.tip-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.tip-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-strong);
+}
+
+.tip-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.tip-icon i {
+  font-size: 2.2rem;
+  color: var(--white);
+}
+
+.tip-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.tip-card p {
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* Sample Images Section */
+.sample-section {
+  background-color: var(--white);
+  padding: 5rem 0;
+}
+
+.sample-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.sample-item {
+  text-align: center;
+  transition: var(--transition);
+}
+
+.sample-image {
+  margin-bottom: 1.5rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.sample-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.sample-item:hover .sample-image img {
+  transform: scale(1.05);
+}
+
+.sample-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.sample-item p {
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* CTA Section */
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Updated button styles */
+.secondary-btn {
+  background-color: var(--primary-color); /* Match primary button color */
+  color: var(--white);
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Ensuring consistent button styles in CTA section */
+.cta-buttons .btn {
+  color: var(--white);
+}
+
+/* Loading Animation */
+.loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.loading div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loading div:nth-child(1) {
+  left: 8px;
+  animation: loading1 0.6s infinite;
+}
+
+.loading div:nth-child(2) {
+  left: 8px;
+  animation: loading2 0.6s infinite;
+}
+
+.loading div:nth-child(3) {
+  left: 32px;
+  animation: loading2 0.6s infinite;
+}
+
+.loading div:nth-child(4) {
+  left: 56px;
+  animation: loading3 0.6s infinite;
+}
+
+@keyframes loading1 {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes loading2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(24px, 0); }
+}
+
+@keyframes loading3 {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .page-banner {
+    height: 35vh;
+  }
+  
+  .banner-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .upload-container {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-banner {
+    height: 30vh;
+    min-height: 200px;
+  }
+  
+  .banner-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .banner-content p {
+    font-size: 1rem;
+  }
+  
+  .upload-area {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .result-content {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-banner {
+    min-height: 180px;
+  }
+  
+  .banner-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .upload-icon i {
+    font-size: 3rem;
+  }
+  
+  .upload-area h3 {
+    font-size: 1.3rem;
+  }
+  
+  .tips-grid,
+  .sample-grid {
+    grid-template-columns: 1fr;
+  }
+}
