@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Detection | MediSort AI</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="detect.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-pills"></i>
+        <h1>MediSort AI</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="detect.html" class="active">Medicine Detection</a></li>
+          <li><a href="details.html">Medicine Details</a></li>
+          <li><a href="indication.html">Search by Indication</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+      
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div class="banner-overlay">
+      <div class="banner-content">
+        <h1>Medicine <span class="highlight">Detection</span></h1>
+        <p>Upload an image of your medication for instant AI-powered identification</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="detection-container">
+    <div class="container">
+      <div class="upload-container">
+        <div class="upload-area" id="uploadArea">
+          <div class="upload-icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+          <h3>Upload Medicine Image</h3>
+          <p>Drag and drop your image here or click to browse</p>
+        </div>
+        
+        <form id="imageForm">
+          <input type="file" id="imageInput" name="image" accept="image/*" required style="display: none;" />
+          <button type="submit" id="predictBtn" class="btn primary-btn">
+            <i class="fas fa-search"></i> Analyze Medicine
+          </button>
+        </form>
+      </div>
+      
+      <div id="predictionResult" class="prediction-result">
+        <!-- Results will be displayed here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="tips-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Tips for <span class="highlight">Better Results</span></h2>
+        <p>Follow these guidelines to get the most accurate medicine identification</p>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Good Lighting</h3>
+          <p>Ensure your medication is well-lit with minimal shadows for better detection accuracy.</p>
+        </div>
+        
+        <div class="tip-card">
+          <div class="tip-icon">
+            <i class="fas fa-ruler-combined"></i>
+          </div>
+          <h3>Proper Distance</h3>
+          <p>Position your camera at an optimal distance to capture the entire medication clearly.</p>
+        </div>
+        
+        <div class="tip-card">
+          <div class="tip-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>Clear Focus</h3>
+          <p>Ensure your image is sharp and in focus for the most accurate identification results.</p>
+        </div>
+        
+        <div class="tip-card">
+          <div class="tip-icon">
+            <i class="fas fa-image"></i>
+          </div>
+          <h3>Clean Background</h3>
+          <p>Use a plain, contrasting background to help our AI clearly distinguish the medication.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sample-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sample <span class="highlight">Images</span></h2>
+        <p>Examples of ideal medication images for accurate detection</p>
+      </div>
+      
+      <div class="sample-grid">
+        <div class="sample-item">
+          <div class="sample-image">
+            <img src="papa.webp" alt="Medicine Sample 1">
+          </div>
+          <h3>Tablets</h3>
+          <p>Clear view of tablet shape, color, and markings</p>
+        </div>
+        
+        <div class="sample-item">
+          <div class="sample-image">
+            <img src="sample_cap.avif" alt="Medicine Sample 2">
+          </div>
+          <h3>Capsules</h3>
+          <p>Distinctive capsule colors and markings</p>
+        </div>
+        
+        <div class="sample-item">
+          <div class="sample-image">
+            <img src="boxes2.png" alt="Medicine Sample 3">
+          </div>
+          <h3>Packaging</h3>
+          <p>Medication box or blister pack with visible text</p>
+        </div>
+        
+        <div class="sample-item">
+          <div class="sample-image">
+            <img src="pres3.jpeg" alt="Medicine Sample 4">
+          </div>
+          <h3>Prescription Label</h3>
+          <p>Pharmacy label with medication information</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-content">
+      <h2>More Ways to Identify Your Medication</h2>
+      <p>Explore alternative methods for finding information about your medications</p>
+      <div class="cta-buttons">
+        <a href="details.html" class="btn primary-btn">
+          <i class="fas fa-info-circle"></i> Medicine Details
+        </a>
+        <a href="indication.html" class="btn secondary-btn">
+          <i class="fas fa-search"></i> Search by Indication
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fas fa-pills"></i>
+        <h2>MediSort AI</h2>
+        <p>Smart medication identification powered by artificial intelligence</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="detect.html">Medicine Detection</a></li>
+          <li><a href="details.html">Medicine Details</a></li>
+          <li><a href="indication.html">Search by Indication</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> info@medisortai.com</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MediSort AI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="detect.js"></script>
+</body>
+</html>

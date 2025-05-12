@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediSort AI | Medicine Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="details.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-pills"></i>
+        <h1>MediSort AI</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="detect.html">Medicine Detection</a></li>
+          <li><a href="details.html" class="active">Medicine Details</a></li>
+          <li><a href="indication.html">Search by Indication</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="details-hero">
+    <div class="details-hero-overlay">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Get Detailed <span class="highlight">Medicine</span> Information</h1>
+          <p>Search our comprehensive database for detailed information about any medication</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-section">
+    <div class="container">
+      <div class="search-container">
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <input type="text" id="medicineName" placeholder="Enter medicine name (e.g., Panadol, Aspirin, Ibuprofen)" />
+        <button id="searchBtn" class="search-btn">Search</button>
+      </div>
+      <div class="search-tips">
+        <p><i class="fas fa-lightbulb"></i> Try searching by brand name or generic name for best results</p>
+      </div>
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div id="loadingIndicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Searching our database...</p>
+      </div>
+      
+      <div id="noResults" class="no-results">
+        <i class="fas fa-exclamation-circle"></i>
+        <h3>No Results Found</h3>
+        <p>Please check the spelling or try another medicine name</p>
+      </div>
+      
+      <div id="medicineInfo" class="medicine-info">
+        <!-- Results will be displayed here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- New Medicine Gallery Section - Add this right after your results-section -->
+<section class="medicine-gallery-section">
+  <div class="container">
+    <h2>Common Medicines Gallery</h2>
+    <p class="gallery-description">Browse through our collection of common medications with descriptions</p>
+    
+    <div class="medicine-gallery">
+      <div class="gallery-row">
+        <!-- Row 1 -->
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="ALEVE GEL.jpeg" alt="Aleve Gel">
+          </div>
+          <div class="medicine-description">
+            <h3>Aleve Gel</h3>
+            <p>A topical pain reliever used for muscle aches, joint pain, and arthritis symptoms.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Allegra.jpeg" alt="Allegra">
+          </div>
+          <div class="medicine-description">
+            <h3>Allegra</h3>
+            <p>An antihistamine that reduces the effects of natural chemical histamine in the body to treat allergy symptoms.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Amoxicillin.png" alt="Amoxicillin">
+          </div>
+          <div class="medicine-description">
+            <h3>Amoxicillin</h3>
+            <p>A penicillin antibiotic that fights bacteria in the body to treat various infections.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Augmentin.webp" alt="Augmentin">
+          </div>
+          <div class="medicine-description">
+            <h3>Augmentin</h3>
+            <p>An antibiotic combination containing amoxicillin and clavulanate to treat bacterial infections.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-row">
+        <!-- Row 2 -->
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Betnovate-N.webp" alt="Betnovate-N">
+          </div>
+          <div class="medicine-description">
+            <h3>Betnovate-N</h3>
+            <p>A corticosteroid and antibiotic combination cream used to treat inflamed skin conditions.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Coferb.jpg" alt="Coferb">
+          </div>
+          <div class="medicine-description">
+            <h3>Coferb</h3>
+            <p>A cough syrup used to relieve symptoms of cough and cold.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="dermex.jpeg" alt="Dermex">
+          </div>
+          <div class="medicine-description">
+            <h3>Dermex</h3>
+            <p>A topical cream used to treat various skin conditions including eczema and dermatitis.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Doxycycline.webp" alt="Doxycycline">
+          </div>
+          <div class="medicine-description">
+            <h3>Doxycycline</h3>
+            <p>A tetracycline antibiotic used to treat a wide variety of bacterial infections.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-row">
+        <!-- Row 3 -->
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Ferosoft.webp" alt="Ferosoft">
+          </div>
+          <div class="medicine-description">
+            <h3>Ferosoft</h3>
+            <p>An iron supplement used to treat or prevent iron deficiency anemia.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Flagyl.jpg" alt="Flagyl">
+          </div>
+          <div class="medicine-description">
+            <h3>Flagyl</h3>
+            <p>An antibiotic used to treat bacterial infections of the vagina, stomach, skin, joints, and respiratory tract.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Glucophage.webp" alt="Glucophage">
+          </div>
+          <div class="medicine-description">
+            <h3>Glucophage</h3>
+            <p>An oral diabetes medicine that helps control blood sugar levels in patients with type 2 diabetes.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Lopressor.jpg" alt="Lopressor">
+          </div>
+          <div class="medicine-description">
+            <h3>Lopressor</h3>
+            <p>A beta-blocker used to treat high blood pressure, angina, and heart failure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-row">
+        <!-- Row 4 -->
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Opdivo.jpeg" alt="Opdivo">
+          </div>
+          <div class="medicine-description">
+            <h3>Opdivo</h3>
+            <p>An immunotherapy medication used to treat various types of cancer.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="papa.webp" alt="Panadol">
+          </div>
+          <div class="medicine-description">
+            <h3>Panadol</h3>
+            <p>A pain reliever and fever reducer used to treat many conditions such as headache, muscle aches, arthritis, and fever.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Pulmonol.avif" alt="Pulmonol">
+          </div>
+          <div class="medicine-description">
+            <h3>Pulmonol</h3>
+            <p>A respiratory medication used to treat asthma and COPD symptoms.</p>
+          </div>
+        </div>
+
+        <div class="medicine-card">
+          <div class="medicine-image">
+            <!-- Replace with actual image path -->
+            <img src="Vaporub.jpeg" alt="Vaporub">
+          </div>
+          <div class="medicine-description">
+            <h3>Vaporub</h3>
+            <p>A topical ointment used to relieve cough and congestion symptoms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End of Medicine Gallery Section -->
+
+  <section class="search-history">
+    <div class="container">
+      <h2>Recently Searched Medicines</h2>
+      <div class="history-pills" id="searchHistory">
+        <!-- Search history will be displayed here -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fas fa-pills"></i>
+        <h2>MediSort AI</h2>
+        <p>Smart medication identification powered by artificial intelligence</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="detect.html">Medicine Detection</a></li>
+          <li><a href="details.html">Medicine Details</a></li>
+          <li><a href="indication.html">Search by Indication</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> info@medisortai.com</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MediSort AI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="details.js"></script>
+</body>
+</html>

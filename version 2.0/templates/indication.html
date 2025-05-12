@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search by Indication | MediSort AI</title>
+  <link rel="stylesheet" href="indication.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-pills"></i>
+        <h1>MediSort AI</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="detect.html">Medicine Detection</a></li>
+          <li><a href="details.html">Medicine Details</a></li>
+          <li><a href="indication.html" class="active">Search by Indication</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Get Detailed Medicine Information</h1>
+      <p>Search our comprehensive database for detailed information about any medication</p>
+    </div>
+  </section>
+
+  <section class="search-container">
+    <div class="search-box">
+      <div class="search-input-container">
+        <i class="fas fa-search search-input-icon"></i>
+        <input type="text" id="indication" class="search-input" placeholder="Enter condition or symptom (e.g., headache, hypertension, allergies)" />
+        <button onclick="searchByIndication()" class="search-button">Search</button>
+      </div>
+      <p class="search-tip">
+        <i class="fas fa-lightbulb"></i> Try searching by medical conditions, symptoms, or therapeutic uses for best results
+      </p>
+    </div>
+  </section>
+ 
+  <div id="loadingIndicator" class="loading" style="display: none;">
+    <i class="fas fa-spinner"></i>
+  </div>
+  
+  <section class="results-section">
+    <div id="indicationResult" class="results-container">
+      <!-- Results will be displayed here -->
+    </div>
+  </section>
+
+  <section class="features-bar">
+    <div class="features-container">
+      <div class="feature-box">
+        <i class="fas fa-clipboard-list"></i>
+        <h3>Symptom-Based Search</h3>
+        <p>Find medications based on specific symptoms you're experiencing</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-disease"></i>
+        <h3>Condition Matching</h3>
+        <p>Search for medications that treat specific medical conditions or diseases</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Alternative Options</h3>
+        <p>Discover alternative medications for the same indication or condition</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fas fa-pills"></i>
+        <h2>MediSort AI</h2>
+        <p>Smart medication identification powered by artificial intelligence</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="detect.html">Medicine Detection</a></li>
+          <li><a href="details.html">Medicine Details</a></li>
+          <li><a href="indication.html">Search by Indication</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> info@medisortai.com</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MediSort AI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="indication.js"></script>
+</body>
+</html>
