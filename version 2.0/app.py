@@ -21,24 +21,24 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
-# ---- Load TFLite Model ----
+#  Load TFLite Model 
 interpreter = tf.lite.Interpreter(model_path="model_unquant.tflite")
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
-# ---- Load Labels ----
+#  Load Labels 
 with open("labels.txt", "r") as f:
     labels = [line.strip() for line in f.readlines()]
 
-# ---- Preprocess Image ----
+# Preprocess Image 
 def preprocess_image(image_bytes):
     img = Image.open(io.BytesIO(image_bytes)).resize((224, 224))
     img = np.expand_dims(np.array(img).astype(np.float32) / 255.0, axis=0)
     return img
 
-# ---- Route 1: Predict from Image ----
+#  Route 1: Predict from Image 
 @app.route("/predict", methods=["POST"])
 def predict_medicine():
     if 'image' not in request.files:
@@ -61,7 +61,7 @@ def predict_medicine():
         "confidence": confidence
     })
 
-# ---- Route 2: Get Medicine Details ----
+#  Route 2: Get Medicine Details 
 @app.route("/medicine/<name>", methods=["GET"])
 def get_medicine_info(name):
     query = """
@@ -92,7 +92,7 @@ def get_medicine_info(name):
         "side_effects": row[5]
     })
 
-# ---- Route 3: Search by Indication ----
+#  Route 3: Search by Indication 
 @app.route("/search_by_indication", methods=["GET"])
 def search_by_indication():
     indication = request.args.get("indication")
