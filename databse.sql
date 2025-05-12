@@ -58,7 +58,7 @@ CREATE TABLE MedicineSideEffect (
     FOREIGN KEY (side_effect_id) REFERENCES SideEffect(side_effect_id) ON DELETE CASCADE
 );
 
--- Create table for Medicine Interactions (Medicine-to-Medicine relationships)
+
 CREATE TABLE MedicineInteraction (
     interaction_id SERIAL PRIMARY KEY,
     medicine_id INT NOT NULL,
