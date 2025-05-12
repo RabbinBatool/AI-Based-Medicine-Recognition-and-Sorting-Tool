@@ -12,7 +12,6 @@ CREATE TABLE Category (
     description TEXT
 );
 
--- Create table for Active Ingredients
 CREATE TABLE ActiveIngredient (
     ingredient_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
