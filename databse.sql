@@ -77,7 +77,7 @@ CREATE TABLE Users (
     email VARCHAR(255) UNIQUE
 );
 
--- Create table for Feedback on Medicine Recognition
+
 CREATE TABLE RecognitionFeedback (
     feedback_id SERIAL PRIMARY KEY,
     user_id INT,
