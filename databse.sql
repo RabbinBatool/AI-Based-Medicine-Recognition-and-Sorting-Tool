@@ -48,7 +48,7 @@ CREATE TABLE SideEffect (
     description TEXT NOT NULL
 );
 
--- Create table for linking Medicines with Side Effects (Many-to-Many)
+
 CREATE TABLE MedicineSideEffect (
     medicine_id INT,
     side_effect_id INT,
