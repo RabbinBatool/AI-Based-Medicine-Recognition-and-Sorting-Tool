@@ -228,7 +228,7 @@ header {
 .hero-section {
   height: 100vh;
   min-height: 600px;
-  background: url('2.jpg') no-repeat center center;
+  background: url('/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/2.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
   overflow: hidden;
