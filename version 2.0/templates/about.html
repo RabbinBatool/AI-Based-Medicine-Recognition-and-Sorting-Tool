@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | MediSort AI</title>
-  <link rel="stylesheet" href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/styles.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -12,7 +12,7 @@
     .about-hero {
       height: 50vh;
       min-height: 400px;
-      background: url('/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/2.jpg') no-repeat center center;
+      background: url("{{ url_for('static', filename='assets/2.jpg') }}") no-repeat center center;
       background-size: cover;
       position: relative;
       overflow: hidden;
@@ -166,11 +166,11 @@
       </div>
       <nav>
         <ul class="nav-links">
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/index.html">Home</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html">Medicine Detection</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.html">Medicine Details</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/indication.html">Search by Indication</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/about.html" class="active">About Us</a></li>
+          <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+          <li><a href="{{ url_for('detect') }}">Medicine Detection</a></li>
+          <li><a href="{{ url_for('details') }}">Medicine Details</a></li>
+          <li><a href="{{ url_for('indication') }}">Search by Indication</a></li>
+          <li><a href="{{ url_for ('about')}}" class="active">About Us</a></li>
         </ul>
         <div class="hamburger">
           <span></span>
@@ -200,7 +200,7 @@
     
     <div class="about-content">
       <div class="about-image">
-        <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/doctors.jpg" alt="MediSort AI Team">
+        <img src="{{ url_for('static', filename='assets/doctors.jpg') }}" alt="MediSort AI Team">
       </div>
       <div class="about-text">
         <p>Founded in 2025, MediSort AI emerged from a simple yet powerful vision: to create a world where medication errors are eliminated through innovative technology. Our team of healthcare professionals, AI specialists, and software engineers came together with a shared commitment to addressing the challenges of medication identification and information access.</p>
@@ -266,7 +266,7 @@
       <div class="team-grid">
         <div class="team-card">
           <div class="team-img-container">
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/ilsa.jpg" alt="Team Member" class="team-img">
+            <img src="{{ url_for('static', filename='assets/ilsa.jpg') }}" alt="Team Member" class="team-img">
           </div>
           <div class="team-info">
             <h3>Ilsa Maryam </h3>
@@ -281,7 +281,7 @@
         
         <div class="team-card">
           <div class="team-img-container">
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/rabbin.jpg" alt="Team Member" class="team-img">
+            <img src="{{ url_for('static', filename='assets/rabbin.jpg') }}" alt="Team Member" class="team-img">
           </div>
           <div class="team-info">
             <h3>Rabbin Batool</h3>
@@ -301,7 +301,7 @@
     <div class="cta-content">
       <h2>Join Our Mission to Transform Healthcare</h2>
       <p>Experience the future of medication identification and management today.</p>
-      <a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html" class="btn primary-btn">Try MediSort AI Now</a>
+      <a href="{{ url_for('detect') }}" class="btn primary-btn">Try MediSort AI Now</a>
     </div>
   </section>
 
@@ -315,11 +315,11 @@
       <div class="footer-links">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/index.html">Home</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html">Medicine Detection</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.html">Medicine Details</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/indication.html">Search by Indication</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/about.html">About Us</a></li>
+          <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+          <li><a href="{{ url_for('detect') }}">Medicine Detection</a></li>
+          <li><a href="{{ url_for('details') }}">Medicine Details</a></li>
+          <li><a href="{{ url_for('indication') }}">Search by Indication</a></li>
+          <li><a href="{{ url_for('about') }}">About Us</a></li>
         </ul>
       </div>
       <div class="footer-contact">
