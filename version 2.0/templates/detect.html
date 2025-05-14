@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Medicine Detection | MediSort AI</title>
-  <link rel="stylesheet" href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/styles.css">
-  <link rel="stylesheet" href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/detect.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='detect.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
+  <style>
+    .page-banner {
+      height: 40vh;
+      min-height: 300px;
+      background: url("{{ url_for('static', filename='assets/2.jpg') }}") no-repeat center center;
+      background-size: cover;
+      position: relative;
+      margin-top: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
 <body>
   <header>
     <div class="header-container">
@@ -19,17 +32,14 @@
       </div>
       <nav>
         <ul class="nav-links">
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/index.html">Home</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html" class="active">Medicine Detection</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.html">Medicine Details</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/indication.html">Search by Indication</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/about.html" class="active">About Us</a></li>
-      
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('detect') }}" class="active">Medicine Detection</a></li>
+          <li><a href="{{ url_for('details') }}">Medicine Details</a></li>
+          <li><a href="{{ url_for('indication') }}">Search by Indication</a></li>
+          <li><a href="{{ url_for('about') }}">About Us</a></li>
         </ul>
         <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </div>
       </nav>
     </div>
@@ -118,35 +128,32 @@
         <h2>Sample <span class="highlight">Images</span></h2>
         <p>Examples of ideal medication images for accurate detection</p>
       </div>
-      
+
       <div class="sample-grid">
         <div class="sample-item">
           <div class="sample-image">
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/papa.webp" alt="Medicine Sample 1">
+            <img src="{{ url_for('static', filename='assets/papa.webp') }}" alt="Medicine Sample 1" />
           </div>
           <h3>Tablets</h3>
           <p>Clear view of tablet shape, color, and markings</p>
         </div>
-        
         <div class="sample-item">
           <div class="sample-image">
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/sample_cap.avif" alt="Medicine Sample 2">
+            <img src="{{ url_for('static', filename='assets/sample_cap.avif') }}" alt="Medicine Sample 2" />
           </div>
           <h3>Capsules</h3>
           <p>Distinctive capsule colors and markings</p>
         </div>
-        
         <div class="sample-item">
           <div class="sample-image">
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/boxes2.png" alt="Medicine Sample 3">
+            <img src="{{ url_for('static', filename='assets/boxes2.png') }}" alt="Medicine Sample 3" />
           </div>
           <h3>Packaging</h3>
           <p>Medication box or blister pack with visible text</p>
         </div>
-        
         <div class="sample-item">
           <div class="sample-image">
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/pres3.jpeg" alt="Medicine Sample 4">
+            <img src="{{ url_for('static', filename='assets/pres3.jpeg') }}" alt="Medicine Sample 4" />
           </div>
           <h3>Prescription Label</h3>
           <p>Pharmacy label with medication information</p>
@@ -160,10 +167,10 @@
       <h2>More Ways to Identify Your Medication</h2>
       <p>Explore alternative methods for finding information about your medications</p>
       <div class="cta-buttons">
-        <a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.html" class="btn primary-btn">
+        <a href="{{ url_for('details') }}" class="btn primary-btn">
           <i class="fas fa-info-circle"></i> Medicine Details
         </a>
-        <a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/indication.html" class="btn secondary-btn">
+        <a href="{{ url_for('indication') }}" class="btn secondary-btn">
           <i class="fas fa-search"></i> Search by Indication
         </a>
       </div>
@@ -180,11 +187,11 @@
       <div class="footer-links">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/index.html">Home</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html">Medicine Detection</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.html">Medicine Details</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/indication.html">Search by Indication</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/about.html">About Us</a></li>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('detect') }}">Medicine Detection</a></li>
+          <li><a href="{{ url_for('details') }}">Medicine Details</a></li>
+          <li><a href="{{ url_for('indication') }}">Search by Indication</a></li>
+          <li><a href="{{ url_for('about') }}">About Us</a></li>
         </ul>
       </div>
       <div class="footer-contact">
@@ -203,7 +210,7 @@
     </div>
   </footer>
 
-  <script src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/script.js"></script>
-  <script src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='detect.html') }}"></script>
 </body>
 </html>
