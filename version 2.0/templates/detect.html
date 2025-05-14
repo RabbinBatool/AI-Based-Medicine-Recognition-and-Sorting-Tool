@@ -11,16 +11,56 @@
 
   <style>
     .page-banner {
-      height: 40vh;
-      min-height: 300px;
-      background: url("{{ url_for('static', filename='assets/2.jpg') }}") no-repeat center center;
-      background-size: cover;
-      position: relative;
-      margin-top: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+            height: 40vh;
+            min-height: 300px;
+            background: url("{{ url_for('static', filename='assets/2.jpg') }}") no-repeat center center;
+            background-size: cover;
+            position: relative;
+            margin-top: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .uploaded-image {
+            margin-top: 20px;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .uploaded-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .prediction-result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .prediction-result h3 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        .prediction-result h4 {
+            margin-top: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            color: #007bff;
+        }
+        .prediction-result p {
+            margin-bottom: 8px;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
   </style>
 </head>
 <body>
@@ -74,7 +114,6 @@
       </div>
       
       <div id="predictionResult" class="prediction-result">
-        <!-- Results will be displayed here -->
       </div>
     </div>
   </section>
@@ -211,6 +250,77 @@
   </footer>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
-  <script src="{{ url_for('static', filename='detect.html') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('imageForm');
+            const predictionResultDiv = document.getElementById('predictionResult');
+            const uploadArea = document.getElementById('uploadArea');
+            const imageInput = document.getElementById('imageInput');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                predictionResultDiv.innerHTML = '<p><i class="fas fa-spinner fa-spin"></i> Analyzing image...</p>';
+
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch('/detect', {
+                        method: 'POST',
+                        body: formData,
+                    });
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        let resultHTML = `<h3>Prediction: <span class="highlight">${data.predicted_name}</span></h3>`;
+                        resultHTML += `<p>Confidence: ${data.confidence}</p>`;
+
+                        if (data.image_url) {
+                            resultHTML += `<div class="uploaded-image"><img src="${data.image_url}" alt="Uploaded Medicine Image"></div>`;
+                        }
+
+                        if (data.medicine_details) {
+                            resultHTML += '<h4>Medicine Details:</h4>';
+                            resultHTML += `<p><strong>Category:</strong> ${data.medicine_details.category || 'N/A'}</p>`;
+                            resultHTML += `<p><strong>Dosage Form:</strong> ${data.medicine_details.dosage_form || 'N/A'}</p>`;
+                            resultHTML += `<p><strong>Used For:</strong> ${data.medicine_details.used_for || 'N/A'}</p>`;
+                            resultHTML += `<p><strong>Indications:</strong> ${data.medicine_details.indications || 'N/A'}</p>`;
+                            resultHTML += `<p><strong>Side Effects:</strong> ${data.medicine_details.side_effects || 'N/A'}</p>`;
+                        } else if (data.message) {
+                            resultHTML += `<p class="warning">${data.message}</p>`;
+                        }
+
+                        predictionResultDiv.innerHTML = resultHTML;
+                    } else {
+                        predictionResultDiv.innerHTML = `<p class="error">Error: ${data.error || 'An unknown error occurred.'}</p>`;
+                    }
+                } catch (error) {
+                    console.error('Error during detection:', error);
+                    predictionResultDiv.innerHTML = `<p class="error">A network error occurred. Please try again.</p>`;
+                }
+            });
+
+            if (uploadArea && imageInput) {
+                uploadArea.addEventListener('click', () => {
+                    imageInput.click();
+                });
+
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('dragover');
+                });
+
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('dragover');
+                });
+
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('dragover');
+                    imageInput.files = e.dataTransfer.files;
+                    form.dispatchEvent(new Event('submit')); // Automatically submit on drop
+                });
+            }
+        });
+    </script>
 </body>
 </html>
