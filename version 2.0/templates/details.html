@@ -4,10 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediSort AI | Medicine Details</title>
-  <link rel="stylesheet" href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/styles.css">
-  <link rel="stylesheet" href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/details.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='details.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  .details-hero {
+  height: 50vh;
+  min-height: 300px;
+  background: url("{{ url_for('static', filename='assets/2.jpg') }}") no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-top: 70px; /* Account for fixed header */
+  padding: 0;
+}
+</style>
 </head>
 <body>
   <header>
@@ -18,11 +32,11 @@
       </div>
       <nav>
         <ul class="nav-links">
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/index.html">Home</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html">Medicine Detection</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.html" class="active">Medicine Details</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/indication.html">Search by Indication</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/about.html" class="active">About Us</a></li>
+          <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+          <li><a href="{{ url_for('detect') }}">Medicine Detection</a></li>
+          <li><a href="{{ url_for('details') }}">Medicine Details</a></li>
+          <li><a href="{{ url_for('indication') }}">Search by Indication</a></li>
+          <li><a href="{{ url_for ('about')}}" class="active">About Us</a></li>
         </ul>
         <div class="hamburger">
           <span></span>
@@ -89,7 +103,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/ALEVE GEL.jpeg" alt="Aleve Gel">
+            <img src=" {{ url_for('static', filename='assets/ALEVE GEL.jpeg') }}" alt="Aleve Gel">
           </div>
           <div class="medicine-description">
             <h3>Aleve Gel</h3>
@@ -100,7 +114,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Allegra.jpeg" alt="Allegra">
+            <img src=" {{ url_for('static', filename='assets/Allegra.jpeg') }}" alt="Allegra">
           </div>
           <div class="medicine-description">
             <h3>Allegra</h3>
@@ -111,7 +125,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Amoxicillin.png" alt="Amoxicillin">
+            <img src=" {{ url_for('static', filename='assets/Amoxicillin.png') }}" alt="Amoxicillin">
           </div>
           <div class="medicine-description">
             <h3>Amoxicillin</h3>
@@ -122,7 +136,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Augmentin.webp" alt="Augmentin">
+            <img src=" {{ url_for('static', filename='assets/Augmentin.webp') }}" alt="Augmentin">
           </div>
           <div class="medicine-description">
             <h3>Augmentin</h3>
@@ -136,7 +150,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Betnovate-N.webp" alt="Betnovate-N">
+            <img src=" {{ url_for('static', filename='assets/Betnovate-N.webp') }}" alt="Betnovate-N">
           </div>
           <div class="medicine-description">
             <h3>Betnovate-N</h3>
@@ -147,7 +161,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Coferb.jpg" alt="Coferb">
+            <img src=" {{ url_for('static', filename='assets/Coferb.jpg') }}" alt="Coferb">
           </div>
           <div class="medicine-description">
             <h3>Coferb</h3>
@@ -158,7 +172,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/dermex.jpeg" alt="Dermex">
+            <img src=" {{ url_for('static', filename='assets/dermex.jpeg') }}" alt="Dermex">
           </div>
           <div class="medicine-description">
             <h3>Dermex</h3>
@@ -169,7 +183,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Doxycycline.webp" alt="Doxycycline">
+            <img src=" {{ url_for('static', filename='assets/Doxycycline.webp') }}" alt="Doxycycline">
           </div>
           <div class="medicine-description">
             <h3>Doxycycline</h3>
@@ -183,7 +197,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Ferosoft.webp" alt="Ferosoft">
+            <img src=" {{ url_for('static', filename='assets/Ferosoft.webp') }}" alt="Ferosoft">
           </div>
           <div class="medicine-description">
             <h3>Ferosoft</h3>
@@ -194,7 +208,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Flagyl.jpg" alt="Flagyl">
+            <img src=" {{ url_for('static', filename='assets/Flagyl.jpg') }}" alt="Flagyl">
           </div>
           <div class="medicine-description">
             <h3>Flagyl</h3>
@@ -205,7 +219,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Glucophage.webp" alt="Glucophage">
+            <img src=" {{ url_for('static', filename='assets/Glucophage.webp') }}" alt="Glucophage">
           </div>
           <div class="medicine-description">
             <h3>Glucophage</h3>
@@ -216,7 +230,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Lopressor.jpg" alt="Lopressor">
+            <img src=" {{ url_for('static', filename='assets/Lopressor.jpg') }}" alt="Lopressor">
           </div>
           <div class="medicine-description">
             <h3>Lopressor</h3>
@@ -230,7 +244,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Opdivo.jpeg" alt="Opdivo">
+            <img src=" {{ url_for('static', filename='assets/Opdivo.jpeg') }}" alt="Opdivo">
           </div>
           <div class="medicine-description">
             <h3>Opdivo</h3>
@@ -241,7 +255,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/papa.webp" alt="Panadol">
+            <img src=" {{ url_for('static', filename='assets/papa.webp') }}" alt="Panadol">
           </div>
           <div class="medicine-description">
             <h3>Panadol</h3>
@@ -252,7 +266,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Pulmonol.avif" alt="Pulmonol">
+            <img src=" {{ url_for('static', filename='assets/Pulmonol.avif') }}" alt="Pulmonol">
           </div>
           <div class="medicine-description">
             <h3>Pulmonol</h3>
@@ -263,7 +277,7 @@
         <div class="medicine-card">
           <div class="medicine-image">
             <!-- Replace with actual image path -->
-            <img src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/static/assets/Vaporub.jpeg" alt="Vaporub">
+            <img src=" {{ url_for('static', filename='assets/Vaporub.jpeg') }}" alt="Vaporub">
           </div>
           <div class="medicine-description">
             <h3>Vaporub</h3>
@@ -295,11 +309,11 @@
       <div class="footer-links">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/index.html">Home</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/detect.html">Medicine Detection</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.html">Medicine Details</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/indication.html">Search by Indication</a></li>
-          <li><a href="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/index.html#about">About Us</a></li>
+          <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+          <li><a href="{{ url_for('detect') }}">Medicine Detection</a></li>
+          <li><a href="{{ url_for('details') }}">Medicine Details</a></li>
+          <li><a href="{{ url_for('indication') }}">Search by Indication</a></li>
+          <li><a href="{{ url_for('about') }}">About Us</a></li>
         </ul>
       </div>
       <div class="footer-contact">
@@ -318,6 +332,6 @@
     </div>
   </footer>
 
-  <script src="/AI-Based-Medicine-Recognition-and-Sorting-Tool/version 2.0/templates/details.js"></script>
+  <script src="{{ url_for('static', filename='details.js') }}"></script>
 </body>
 </html>
