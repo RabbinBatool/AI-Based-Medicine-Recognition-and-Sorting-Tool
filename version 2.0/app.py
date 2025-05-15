@@ -180,20 +180,20 @@ def get_medicine(name): # Changed function name
         cur.execute("""
             SELECT
                 m.name AS medicine_name,
-                c.category_name AS category,
                 df.form_name AS dosage_form,
+                c.category_name AS category,
                 m.used_for,
                 STRING_AGG(DISTINCT i.indication_name, ', ') AS indications,
                 STRING_AGG(DISTINCT se.effect_description, ', ') AS side_effects
             FROM medicines m
-            LEFT JOIN categories c ON m.category_id = c.category_id
             LEFT JOIN dosage_forms df ON m.dosage_form_id = df.form_id
+            LEFT JOIN categories c ON m.category_id = c.category_id
             LEFT JOIN medicine_indications mi ON m.medicine_id = mi.medicine_id
             LEFT JOIN indications i ON mi.indication_id = i.indication_id
             LEFT JOIN medicine_side_effects mse ON m.medicine_id = mse.medicine_id
             LEFT JOIN side_effects se ON mse.side_effect_id = se.side_effect_id
             WHERE m.name ILIKE %s
-            GROUP BY m.medicine_id, m.name, c.category_name, df.form_name, m.used_for;
+            GROUP BY m.medicine_id, m.name, df.form_name, c.category_name, m.used_for;
         """, (name,))
         medicine_details = cur.fetchone()
         cur.close()
@@ -233,16 +233,16 @@ def search_by_indication():
         cur = conn.cursor()
         cur.execute("""
             SELECT
-                m.name AS medicine_name,
-                c.category_name AS category,
-                df.form_name AS dosage_form,
-                m.used_for
-            FROM medicines m
-            JOIN medicine_indications mi ON m.medicine_id = mi.medicine_id
-            JOIN indications i ON mi.indication_id = i.indication_id
-            LEFT JOIN categories c ON m.category_id = c.category_id
-            LEFT JOIN dosage_forms df ON m.dosage_form_id = df.form_id
-            WHERE i.indication_name ILIKE %s
+                    m.name AS medicine_name,
+                    df.form_name AS dosage_form,
+                    c.category_name AS category,
+                    m.used_for
+                FROM medicines m
+                JOIN medicine_indications mi ON m.medicine_id = mi.medicine_id
+                JOIN indications i ON mi.indication_id = i.indication_id
+                LEFT JOIN dosage_forms df ON m.dosage_form_id = df.form_id
+                LEFT JOIN categories c ON m.category_id = c.category_id
+                WHERE i.indication_name ILIKE %s
         """, (f'%{indication}%',))
         recommendations = cur.fetchall()
         cur.close()
