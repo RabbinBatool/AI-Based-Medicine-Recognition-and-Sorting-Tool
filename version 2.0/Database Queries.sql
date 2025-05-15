@@ -3,12 +3,14 @@ CREATE TABLE dosage_forms (
     form_id SERIAL PRIMARY KEY,
     form_name TEXT NOT NULL UNIQUE
 );
+drop table dosage_forms cascade;
 
 -- 2. Categories Table
 CREATE TABLE categories (
     category_id SERIAL PRIMARY KEY,
     category_name TEXT NOT NULL UNIQUE
 );
+drop table categories cascade;
 
 -- 3. Medicines Table
 CREATE TABLE medicines (
@@ -19,12 +21,14 @@ CREATE TABLE medicines (
     used_for TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+drop table medicines cascade;
 
 -- 4. Indications Table
 CREATE TABLE indications (
     indication_id SERIAL PRIMARY KEY,
     indication_name TEXT NOT NULL UNIQUE
 );
+drop table indications cascade;
 
 -- 5. Medicine-Indication (Many-to-Many)
 CREATE TABLE medicine_indications (
@@ -32,12 +36,14 @@ CREATE TABLE medicine_indications (
     indication_id INT REFERENCES indications(indication_id) ON DELETE CASCADE,
     PRIMARY KEY (medicine_id, indication_id)
 );
+drop table medicine_indications cascade;
 
 -- 6. Side Effects Table
 CREATE TABLE side_effects (
     side_effect_id SERIAL PRIMARY KEY,
     effect_description TEXT NOT NULL UNIQUE
 );
+drop table side_effects cascade;
 
 -- 7. Medicine-SideEffect (Many-to-Many)
 CREATE TABLE medicine_side_effects (
@@ -46,6 +52,8 @@ CREATE TABLE medicine_side_effects (
     PRIMARY KEY (medicine_id, side_effect_id)
 );
 
+drop table medicine_side_effects cascade;
+
 -- 8. Users Table
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
@@ -53,6 +61,7 @@ CREATE TABLE users (
     email TEXT UNIQUE,
     registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+drop table users;
 
 -- 9. Predictions Table (for AI results)
 CREATE TABLE predictions (
@@ -63,6 +72,7 @@ CREATE TABLE predictions (
     predicted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id INT REFERENCES users(user_id)
 );
+drop table predictions;
 
 -- Inserting Dosage Forms
 INSERT INTO dosage_forms (form_name)
@@ -271,6 +281,8 @@ FROM (
 ) AS t(indication)
 WHERE NOT EXISTS (SELECT 1 FROM indications WHERE indication_name = t.indication);
 
+
+select * from side_effects;
 -- Inserting Side Effects
 INSERT INTO side_effects (effect_description)
 SELECT DISTINCT effect
@@ -309,5 +321,150 @@ FROM (
     ('anterograde amnesia')
 ) AS t(effect)
 WHERE NOT EXISTS (SELECT 1 FROM side_effects WHERE effect_description = t.effect);
+
+select * from indications;
+
+
+-- 1. Insert into dosage_forms
+INSERT INTO dosage_forms (form_name) VALUES
+('Tablet'),
+('Capsule'),
+('Syrup'),
+('Injection'),
+('Cream'),
+('Ointment'),
+('Drops');
+
+-- 2. Insert into categories
+INSERT INTO categories (category_name) VALUES
+('Analgesics'),
+('Antibiotics'),
+('Antihistamines'),
+('Antacids'),
+('Antifungals'),
+('Antivirals'),
+('Vitamins');
+
+-- 3. Insert into medicines
+INSERT INTO medicines (name, dosage_form_id, category_id, used_for)
+SELECT 'Paracetamol', form_id, category_id, 'Pain relief, fever'
+FROM dosage_forms, categories
+WHERE form_name = 'Tablet' AND category_name = 'Analgesics'
+UNION ALL
+SELECT 'Amoxicillin', form_id, category_id, 'Bacterial infections'
+FROM dosage_forms, categories
+WHERE form_name = 'Capsule' AND category_name = 'Antibiotics'
+UNION ALL
+SELECT 'Fluconazole', form_id, category_id, 'Fungal infections'
+FROM dosage_forms, categories
+WHERE form_name = 'Tablet' AND category_name = 'Antifungals'
+UNION ALL
+SELECT 'Acyclovir', form_id, category_id, 'Herpes infections'
+FROM dosage_forms, categories
+WHERE form_name = 'Cream' AND category_name = 'Antivirals'
+UNION ALL
+SELECT 'Vitamin D3', form_id, category_id, 'Vitamin D deficiency'
+FROM dosage_forms, categories
+WHERE form_name = 'Capsule' AND category_name = 'Vitamins';
+
+-- 4. Insert into indications
+INSERT INTO indications (indication_name) VALUES
+('Pain'),
+('Fever'),
+('Bacterial Infection'),
+('Allergy'),
+('Heartburn'),
+('Acid Reflux'),
+('Fungal Infection'),
+('Herpes Simplex'),
+('Vitamin Deficiency'),
+('Inflammation');
+
+-- 5. Insert into medicine_indications (linking medicines to indications)
+INSERT INTO medicine_indications (medicine_id, indication_id)
+SELECT m.medicine_id, i.indication_id
+FROM medicines m
+JOIN indications i ON i.indication_name = 'Bacterial Infection'
+WHERE m.name = 'Amoxicillin'
+UNION ALL
+SELECT m.medicine_id, i.indication_id
+FROM medicines m
+JOIN indications i ON i.indication_name = 'Allergy'
+WHERE m.name = 'Amoxicillin'
+UNION ALL
+SELECT m.medicine_id, i.indication_id
+FROM medicines m
+JOIN indications i ON i.indication_name = 'Heartburn'
+WHERE m.name = 'Amoxicillin'
+UNION ALL
+SELECT m.medicine_id, i.indication_id
+FROM medicines m
+JOIN indications i ON i.indication_name = 'Acid Reflux'
+WHERE m.name = 'Amoxicillin'
+UNION ALL
+SELECT m.medicine_id, i.indication_id
+FROM medicines m
+JOIN indications i ON i.indication_name = 'Fungal Infection'
+WHERE m.name = 'Fluconazole';
+
+
+-- 6. Insert into side_effects
+INSERT INTO side_effects (effect_description) VALUES
+('Nausea'),
+('Diarrhea'),
+('Drowsiness'),
+('Headache'),
+('Skin rash'),
+('Dizziness'),
+('Stomach pain');
+
+-- 7. Insert into medicine_side_effects (linking medicines to side effects)
+INSERT INTO medicine_side_effects (medicine_id, side_effect_id)
+SELECT m.medicine_id, s.side_effect_id
+FROM medicines m
+JOIN side_effects s ON s.effect_description = 'Nausea'
+WHERE m.name = 'Paracetamol'
+UNION ALL
+SELECT m.medicine_id, s.side_effect_id
+FROM medicines m
+JOIN side_effects s ON s.effect_description = 'Diarrhea'
+WHERE m.name = 'Amoxicillin'
+UNION ALL
+SELECT m.medicine_id, s.side_effect_id
+FROM medicines m
+JOIN side_effects s ON s.effect_description = 'Drowsiness'
+WHERE m.name = 'Amoxicillin'
+UNION ALL
+SELECT m.medicine_id, s.side_effect_id
+FROM medicines m
+JOIN side_effects s ON s.effect_description = 'Headache'
+WHERE m.name = 'Amoxicillin'
+UNION ALL
+SELECT m.medicine_id, s.side_effect_id
+FROM medicines m
+JOIN side_effects s ON s.effect_description = 'Skin rash'
+WHERE m.name = 'Fluconazole'
+UNION ALL
+SELECT m.medicine_id, s.side_effect_id
+FROM medicines m
+JOIN side_effects s ON s.effect_description = 'Nausea'
+WHERE m.name = 'Amoxicillin';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
