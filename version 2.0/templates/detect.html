@@ -258,6 +258,7 @@
             const imageInput = document.getElementById('imageInput');
 
             form.addEventListener('submit', async (event) => {
+                console.log('submit handler hit');
                 event.preventDefault();
                 predictionResultDiv.innerHTML = '<p><i class="fas fa-spinner fa-spin"></i> Analyzing image...</p>';
 
@@ -269,6 +270,7 @@
                         body: formData,
                     });
                     const data = await response.json();
+                    console.log('Response:', data);
 
                     if (response.ok) {
                         let resultHTML = `<h3>Prediction: <span class="highlight">${data.predicted_name}</span></h3>`;
@@ -290,18 +292,22 @@
                         }
 
                         predictionResultDiv.innerHTML = resultHTML;
+                        predictionResultDiv.style.display = 'block';
                     } else {
                         predictionResultDiv.innerHTML = `<p class="error">Error: ${data.error || 'An unknown error occurred.'}</p>`;
+                        predictionResultDiv.style.display = 'block';
                     }
                 } catch (error) {
                     console.error('Error during detection:', error);
                     predictionResultDiv.innerHTML = `<p class="error">A network error occurred. Please try again.</p>`;
+                    predictionResultDiv.style.display = 'block';
                 }
             });
 
             if (uploadArea && imageInput) {
                 uploadArea.addEventListener('click', () => {
                     imageInput.click();
+                    console.log('Upload area clicked');
                 });
 
                 uploadArea.addEventListener('dragover', (e) => {
